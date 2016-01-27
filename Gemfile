@@ -12,6 +12,8 @@ gem 'mysql2'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'unicorn'
+gem 'sass-rails'
+gem 'honoka-rails'
 
 group :development, :test do
   gem 'byebug'
