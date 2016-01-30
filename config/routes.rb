@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get  '/auth/:provider/callback', to:'sessions#callback'
+  post '/auth/:provider/callback', to: 'sessions#callback'
+  get  '/auth/failure' => 'sessions#failure'
+  get  '/logout' => 'sessions#destroy'
+  
+  resources :home
 
-  # Serve websocket cable requests in-process
-  # mount ActionCable.server => '/cable'
+  root to: 'home#index'
 end

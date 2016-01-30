@@ -14,6 +14,7 @@ gem 'omniauth-google-oauth2'
 gem 'unicorn'
 gem 'sass-rails'
 gem 'honoka-rails'
+gem 'hamlit'
 
 group :development, :test do
   gem 'byebug'
