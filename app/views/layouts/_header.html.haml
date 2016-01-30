@@ -1,0 +1,25 @@
+%header
+  %div.navbar.navbar-default{role: :navigation}
+    %div.container
+      %div.navbar-header
+        %button.navbar-toggle.collapsed{type: :button, data: {toggle: :collapse, target: "#global-header"}, aria: { expanded: false}}
+          %span.sr-only
+            Toggle Navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "Kanazawabunko", home_index_path, class: "navbar-brand"
+      %div#global-header.collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li
+            %a
+              hogehoge
+          %li
+            %a
+              hogehoge
+        %p.navbar-text.navbar-right
+          - if current_user.blank?
+            = link_to "ログイン/サインイン", "/auth/google_oauth2"
+          - else
+            = link_to 'ログアウト', logout_path
