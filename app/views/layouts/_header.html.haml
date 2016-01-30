@@ -11,15 +11,15 @@
           %span.icon-bar
         = link_to "Kanazawabunko", home_index_path, class: "navbar-brand"
       %div#global-header.collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          %li
-            %a
-              hogehoge
-          %li
-            %a
-              hogehoge
+        - if current_user.present?
+          %ul.nav.navbar-nav
+            %li
+              = link_to "私の本棚", books_path
+            %li
+              %a
+                hogehoge
         %p.navbar-text.navbar-right
-          - if current_user.blank?
-            = link_to "ログイン/サインイン", "/auth/google_oauth2"
-          - else
+          - if current_user.present?
             = link_to 'ログアウト', logout_path
+          - else
+            = link_to "ログイン/サインイン", "/auth/google_oauth2"

@@ -15,6 +15,7 @@ gem 'unicorn'
 gem 'sass-rails'
 gem 'honoka-rails'
 gem 'hamlit'
+gem 'amazon-ecs'
 
 group :development, :test do
   gem 'byebug'
