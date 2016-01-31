@@ -3,9 +3,9 @@
 = form_tag search_books_path, method: :get do
   = text_field_tag :keyword
   = submit_tag '検索'
-%ul
+%ul.list-group
 - @books.each do |book|
-  %li
+  %li.list-group-item
     %div.title
       = link_to book.title, book.url
     %div.img
