@@ -10,3 +10,9 @@
       = link_to book.title, book.url
     %div.img
       %img{alt: book.title, src: book.image_url}
+      = form_for book do |f|
+        = f.hidden_field :title
+        = f.hidden_field :url
+        = f.hidden_field :image_url
+        = f.hidden_field :description
+        = f.submit

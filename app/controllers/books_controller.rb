@@ -7,6 +7,10 @@ class BooksController < ApplicationController
   def show
   end
 
+  def create
+    current_user.books.create(book)
+  end
+
   def search
     #　デバックログ出力するために記述
     Amazon::Ecs.debug = true
@@ -34,5 +38,11 @@ class BooksController < ApplicationController
         @books << book
       end
     end
+  end
+
+  private
+
+  def book
+    permitted_params = params.require(:book).permit(:title, :url, :image_url, :description)
   end
 end
