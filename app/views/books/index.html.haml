@@ -2,3 +2,10 @@
   本一覧
 
 = link_to "本の検索", search_books_path
+
+- @user_books.each do |user_book|
+  %li.list-group-item
+    %div.title
+      = link_to user_book.book.title, user_book.book.url
+    %div.img
+      %img{alt: user_book.book.title, src: user_book.book.image_url}
