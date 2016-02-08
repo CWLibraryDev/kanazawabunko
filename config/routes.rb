@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
+  resources :reviews
 
   root to: 'home#index'
 end
