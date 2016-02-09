@@ -10,4 +10,4 @@
     %div.img
       %img{alt: user_book.book.title, src: user_book.book.image_url}
     %div
-      = link_to "レビューを書く" ,new_review_path
+      = link_to "レビューを書く" , new_book_review_path(user_book)

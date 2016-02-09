@@ -1,5 +1,10 @@
 %div.container
-  = form_for @review do |f|
+  %div.row
+    %h1
+      = @book.title
+    %div
+      %img{alt: @book.title, src: @book.image_url}
+  = form_for @review, url: book_reviews_path do |f|
     %div.form-group
       = f.label :title
       = f.text_field :title, class: "form-control"

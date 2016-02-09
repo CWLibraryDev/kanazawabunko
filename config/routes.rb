@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   get  '/logout' => 'sessions#destroy'
 
   resources :home, only: [:index]
-  resources :books do
+  resources :books, shallow: true  do
     collection do
       get 'search'
     end
+
+    resources :reviews
   end
-  resources :reviews
 
   root to: 'home#index'
 end
