@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_books
   has_many :books, through: :user_books
+  has_many :reviews
 
   def self.form_omniauth(auth)
     User.create(

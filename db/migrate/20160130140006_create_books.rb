@@ -6,8 +6,6 @@ class CreateBooks < ActiveRecord::Migration[5.0]
       t.text :image_url
       t.text :description
       t.timestamps
-
-      t.index :title, :unique => true
     end
   end
 end

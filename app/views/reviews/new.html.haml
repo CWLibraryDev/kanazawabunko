@@ -5,6 +5,7 @@
     %div
       %img{alt: @book.title, src: @book.image_url}
   = form_for @review, url: book_reviews_path do |f|
+    = f.hidden_field :book_id
     %div.form-group
       = f.label :title
       = f.text_field :title, class: "form-control"

@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20160205144836) do
 
   create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "user_id"
-    t.string   "books_id_integer"
+    t.integer  "book_id"
     t.string   "title"
-    t.text     "description",      limit: 65535
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "user_books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20160205144836) do
     t.integer  "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "book_id"], name: "index_user_books_on_user_id_and_book_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
