@@ -9,13 +9,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new(review_params)
-    review.user_id = current_user.id
-    if review.save
-      redirect_to action: :index
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    @review.save
+    if @review.valid?
+      render action: :index
     else
-      binding.pry
-      redirect_to action: :new
+      @book = Book.find(params[:book_id])
+      render action: :new
     end
   end
 

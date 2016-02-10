@@ -4,6 +4,13 @@
       = @book.title
     %div
       %img{alt: @book.title, src: @book.image_url}
+
+  - if @review.errors.full_messages.size > 0
+    %div.alert.alert-danger{role: "alert"}
+      - @review.errors.full_messages.each do |msg|
+        %li
+          = msg
+
   = form_for @review, url: book_reviews_path do |f|
     = f.hidden_field :book_id
     %div.form-group
