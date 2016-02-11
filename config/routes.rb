@@ -9,8 +9,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-
-    resources :reviews
+    resources :reviews, only: [:new, :show, :create, :edit, :update]
   end
 
   root to: 'home#index'

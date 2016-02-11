@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
-  def index
-  end
+  before_filter :login_required
 
   def new
     @review = Review.new
@@ -13,11 +12,18 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.save
     if @review.valid?
-      render action: :index
+      redirect_to books_path
     else
       @book = Book.find(params[:book_id])
       render action: :new
     end
+  end
+
+  def edit
+    
+  end
+
+  def update
   end
 
   private
