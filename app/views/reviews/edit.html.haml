@@ -10,4 +10,5 @@
       - @review.errors.full_messages.each do |msg|
         %li
           = msg
-  = render partial: "form"
+  = form_for @review, url: review_path do |f|
+    = render partial: "form", locals: {f: f}

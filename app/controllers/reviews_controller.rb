@@ -20,10 +20,13 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    
+    @book = UserBook.find(params[:id]).book
+    @review = Review.find_by(user_id: current_user.id, book_id: @book.id)
   end
 
   def update
+    Review.find(params[:id]).update_attributes(review_params)
+    redirect_to books_path
   end
 
   private
