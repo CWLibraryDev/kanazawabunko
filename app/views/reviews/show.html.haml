@@ -14,4 +14,5 @@
   %p
     = @review.description
 %div.row
-  = link_to "レビューを編集",  edit_review_path(@review)
+  - if @review.user_id == current_user.id
+    = link_to "レビューを編集",  edit_review_path(@review)

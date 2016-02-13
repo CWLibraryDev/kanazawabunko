@@ -9,9 +9,7 @@
           %div
             = book.title
           %div
-            = review.title
-          %div
-            = review.description
+            = link_to review.title, review_path(review)
 
 - else
   Kanazawabunkoは図書館サービスです。
