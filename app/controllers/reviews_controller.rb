@@ -30,8 +30,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @book = UserBook.find(params[:id]).book
-    @review = Review.find_by(user_id: current_user.id, book_id: @book.id)
+    @review = Review.find(params[:id])
+    @book = Book.find(@review.book_id)
   end
 
   private
