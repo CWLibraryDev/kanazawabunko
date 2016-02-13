@@ -1,4 +1,17 @@
 - if current_user.present?
-  %h1 index
+  %div.row
+    %ul.list-group
+      - @reviews.each do |review|
+        %li.list-group-item
+          - book = @books.find { |item| item.id == review.book_id}
+          %div
+            %img{alt: book.title, src: book.image_url}
+          %div
+            = book.title
+          %div
+            = review.title
+          %div
+            = review.description
+
 - else
   Kanazawabunkoは図書館サービスです。

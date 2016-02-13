@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_filter :login_required
 
   def index
-    @user_books = UserBook.where(user_id: current_user.id)
+    @user_books = UserBook.where(user_id: current_user.id).order(created_at: :DESC)
   end
 
   def show
@@ -10,6 +10,8 @@ class BooksController < ApplicationController
 
   def create
     current_user.books.create(book)
+
+    redirect_to action: :index
   end
 
   def search
