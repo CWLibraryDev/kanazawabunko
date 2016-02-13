@@ -1,6 +1,6 @@
 %div.row
   %div.col-xs-12
-    %h1 本一覧
+    %h1 本棚
 
 %div.row
   %div.col-xs-12
@@ -12,11 +12,9 @@
       - @user_books.each do |user_book|
         %li.list-group-item
           %div.title
-            = link_to user_book.book.title, user_book.book.url
+            = link_to user_book.book.title, review_path(user_book)
           %div.img
-            %img{alt: user_book.book.title, src: user_book.book.image_url}
+            = link_to image_tag(user_book.book.image_url, alt: user_book.book.title), user_book.book.url
           %div
             - if user_book.book.reviews.length == 0
               = link_to "レビューを書く" , new_book_review_path(user_book)
-            - else
-              = link_to "レビューを編集",  edit_review_path(user_book)

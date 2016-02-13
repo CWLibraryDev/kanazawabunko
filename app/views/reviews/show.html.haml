@@ -1,1 +1,17 @@
-%h1 show
+%div.row
+  = link_to "本棚に戻る", books_path
+
+%div.row
+  %h1
+    = @book.title
+
+%div.row
+  = image_tag @book.image_url, alt: @book.title
+
+%div.row
+  %h2
+    = @review.title
+  %p
+    = @review.description
+%div.row
+  = link_to "レビューを編集",  edit_review_path(@review)

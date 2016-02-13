@@ -26,7 +26,12 @@ class ReviewsController < ApplicationController
 
   def update
     Review.find(params[:id]).update_attributes(review_params)
-    redirect_to books_path
+    redirect_to actions: :show
+  end
+
+  def show
+    @book = UserBook.find(params[:id]).book
+    @review = Review.find_by(user_id: current_user.id, book_id: @book.id)
   end
 
   private
