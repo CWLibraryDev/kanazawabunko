@@ -6,6 +6,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
+    @users = User.find(UserBook.where(book_id: @book.id).pluck(:user_id))
+    binding.pry
   end
 
   def create

@@ -1,0 +1,15 @@
+%div.row
+  %h1
+    = @book.title
+%div.row
+  %img{alt: @book.title, src: @book.image_url}
+%div.row
+  %h2
+    登録している人
+  %ul.list-group
+    - @users.each do |user|
+      %li.list-group-item
+        %span
+          %img{alt: user.name, src: user.icon_url, class: "img-circle", width: 50}
+        %span
+          = user.name

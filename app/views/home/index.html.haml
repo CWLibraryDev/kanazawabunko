@@ -7,7 +7,7 @@
           %div
             %img{alt: book.title, src: book.image_url}
           %div
-            = book.title
+            = link_to book.title, book_path(book)
           %div
             = link_to review.title, review_path(review)
 
