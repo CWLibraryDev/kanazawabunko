@@ -12,7 +12,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    current_user.books.create(book)
+    # 重複排除をしなくてはいけない
+    searched_book = Book.where(Book.arel_table[:title].matches(book[:title])).first
+
+    if searched_book
+      UserBook.create(user_id: current_user.id, book_id: searched_book.id)
+    else
+      current_user.books.create(book)
+    end
 
     redirect_to action: :index
   end

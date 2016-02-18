@@ -10,11 +10,12 @@
   %div.col-xs-12
     %ul.list-group
       - @user_books.each do |user_book|
+        - review = Review.where(user_id: user_book.user_id, book_id: user_book.book_id)[0]
         %li.list-group-item
           %div.title
-            = link_to user_book.book.title, review_path(user_book)
+            = link_to_if review, user_book.book.title, review_path(user_book)
           %div.img
             = link_to image_tag(user_book.book.image_url, alt: user_book.book.title), user_book.book.url
           %div
-            - if user_book.book.reviews.length == 0
-              = link_to "レビューを書く" , new_book_review_path(user_book)
+            - unless review
+              = link_to "レビューを書く" , new_book_review_path(user_book.book_id)
