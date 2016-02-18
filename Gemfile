@@ -19,6 +19,7 @@ gem 'amazon-ecs'
 
 group :development, :test do
   gem 'byebug'
+  gem 'bullet'
 end
 
 group :development do

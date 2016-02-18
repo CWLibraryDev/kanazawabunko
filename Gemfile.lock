@@ -53,6 +53,9 @@ GEM
       rake (~> 10.4)
     arel (7.0.0)
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (8.2.1)
     celluloid (0.17.3)
       celluloid-essentials
@@ -243,6 +246,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.9.0)
     web-console (3.0.0)
       activemodel (>= 4.2)
       debug_inspector
@@ -258,6 +262,7 @@ PLATFORMS
 DEPENDENCIES
   amazon-ecs
   annotate
+  bullet
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl_rails
