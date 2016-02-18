@@ -13,3 +13,8 @@
           %img{alt: user.name, src: user.icon_url, class: "img-circle", width: 50}
         %span
           = user.name
+        %span
+          - if user.user_books.find_by(book_id: @book.id).have?
+            貸し出し可能
+          - else
+            貸し出し不可

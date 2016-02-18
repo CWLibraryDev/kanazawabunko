@@ -5,11 +5,13 @@
         %li.list-group-item
           - book = @books.find { |item| item.id == review.book_id}
           %div
-            %img{alt: book.title, src: book.image_url}
-          %div
             = link_to book.title, book_path(book)
           %div
+            %img{alt: book.title, src: book.image_url}
+          %div
             = link_to review.title, review_path(review)
+          %div
+            = User.find(review.user_id).name
 
 - else
   Kanazawabunkoは図書館サービスです。

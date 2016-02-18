@@ -8,7 +8,6 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @users = User.find(UserBook.where(book_id: @book.id).pluck(:user_id))
-    binding.pry
   end
 
   def create
@@ -16,7 +15,7 @@ class BooksController < ApplicationController
     searched_book = Book.where(Book.arel_table[:title].matches(book[:title])).first
 
     if searched_book
-      UserBook.create(user_id: current_user.id, book_id: searched_book.id)
+      UserBook.create(user_id: current_user.id, book_id: searched_book.id, have: false)
     else
       current_user.books.create(book)
     end
