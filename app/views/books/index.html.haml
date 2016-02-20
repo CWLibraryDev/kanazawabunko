@@ -7,20 +7,19 @@
     = link_to "本の検索", search_books_path, class: 'btn btn-primary'
 
 %div.row
-  %div.col-xs-12
-    %ul.list-group
-      - @user_books.each do |user_book|
-        - review = Review.where(user_id: user_book.user_id, book_id: user_book.book_id)[0]
-        %li.list-group-item.col-xs-12
-          %div.book_info.col-xs-6
-            %span.img
-              = link_to image_tag(user_book.book.image_url, alt: user_book.book.title), user_book.book.url
-            %span.title
-              = link_to_if review, user_book.book.title, review_path(user_book)
-          %div.operation.col-xs-6
-            %span
-              貸し出し許可：
-              %input{ id: "toggle-trigger", type: "checkbox", data: { toggle: "toggle"} }
-            %span
-              - unless review
-                = link_to "レビューを書く" , new_book_review_path(user_book.book_id)
+  %ul.list-group
+    - @user_books.each do |user_book|
+      - review = Review.where(user_id: user_book.user_id, book_id: user_book.book_id)[0]
+      %li.list-group-item.col-xs-12
+        %div.book_info.col-xs-6
+          %span.img
+            = link_to image_tag(user_book.book.image_url, alt: user_book.book.title), user_book.book.url
+          %span.title
+            = link_to_if review, user_book.book.title, review_path(user_book)
+        %div.operation.col-xs-6
+          %span
+            貸し出し許可：
+            %input{ id: "toggle-trigger", type: "checkbox", data: { toggle: "toggle"} }
+          %span
+            - unless review
+              = link_to "レビューを書く" , new_book_review_path(user_book.book_id)

@@ -2,16 +2,24 @@
   %div.row
     %ul.list-group
       - @reviews.each do |review|
-        %li.list-group-item
+        %li.list-group-item.row
           - book = @books.find { |item| item.id == review.book_id}
-          %div
-            = link_to book.title, book_path(book)
-          %div
-            %img{alt: book.title, src: book.image_url}
-          %div
-            = link_to review.title, review_path(review)
-          %div
-            = User.find(review.user_id).name
+          %div.col-xs-6
+            %div.col-xs-3
+              %img{alt: book.title, src: book.image_url}
+            %div.col-xs-9
+              %span
+                = link_to book.title, book_path(book)
+          %div.col-xs-6
+            %div
+              %span
+                = link_to review.title, review_path(review)
+            %div
+              %span
+                = User.find(review.user_id).name
+            %div
+              %span
+                = review.description
 
 - else
   Kanazawabunkoは図書館サービスです。
