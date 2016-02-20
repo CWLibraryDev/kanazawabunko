@@ -3,4 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'ready page:load', () ->
-  $('input[type="checkbox"]').bootstrapToggle()
+  $toggle = $('input[type="checkbox"]')
+  $toggle.bootstrapToggle()
+  $('.toggle').on 'click', (e) ->
+    console.log($(e.target))
+    id = $(e.target).closest('.toggle-group').siblings('input').data('id')
+
+    $.ajax(
+      url: "/user_books/#{id}"
+      method: "PUT"
+    )
