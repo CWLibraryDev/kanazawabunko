@@ -16,6 +16,7 @@ gem 'sass-rails'
 gem 'honoka-rails'
 gem 'hamlit'
 gem 'amazon-ecs'
+gem 'bootstrap-toggle-rails'
 
 group :development, :test do
   gem 'byebug'

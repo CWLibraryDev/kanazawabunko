@@ -52,6 +52,7 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
     arel (7.0.0)
+    bootstrap-toggle-rails (2.2.1.0)
     builder (3.2.2)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
@@ -262,6 +263,7 @@ PLATFORMS
 DEPENDENCIES
   amazon-ecs
   annotate
+  bootstrap-toggle-rails
   bullet
   byebug
   coffee-rails (~> 4.1.0)

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :login_required
+  before_action :login_required
 
   def index
     @user_books = UserBook.where(user_id: current_user.id).order(created_at: :DESC)

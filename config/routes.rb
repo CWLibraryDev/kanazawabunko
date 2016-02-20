@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :user_books, only: [:edit, :update]
+
   root to: 'home#index'
 end
