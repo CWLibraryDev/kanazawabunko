@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   before_action :login_required
 
   def index
-    @user_books = UserBook.where(user_id: current_user.id).order(created_at: :DESC)
+    @user_books = UserBook.includes(:book).includes(:review).where(user_id: current_user.id).order(created_at: :DESC)
   end
 
   def show
@@ -12,12 +12,15 @@ class BooksController < ApplicationController
 
   def create
     # 重複排除をしなくてはいけない
-    searched_book = Book.where(Book.arel_table[:title].matches(book[:title])).first
+    searched_book = Book.where(Book.arel_table[:title].matches(book_params[:title])).first
 
+    # TODO トランザクションする必要がある
     if searched_book
-      UserBook.create(user_id: current_user.id, book_id: searched_book.id, have: false)
+      user_book = UserBook.create(user_id: current_user.id, book_id: searched_book.id, have: false)
+      Timeline.create(user_book_id: user_book.id, timeline_type: :add_bookshelf)
     else
-      current_user.books.create(book)
+      book = current_user.books.create(book_params)
+      Timeline.create(user_book_id: current_user.user_books.find_by(book_id: book.id).id, timeline_type: :add_bookshelf)
     end
 
     redirect_to action: :index
@@ -54,7 +57,7 @@ class BooksController < ApplicationController
 
   private
 
-  def book
+  def book_params
     permitted_params = params.require(:book).permit(:title, :url, :image_url, :description)
   end
 end

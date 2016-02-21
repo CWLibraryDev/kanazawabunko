@@ -3,39 +3,49 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @review.book_id = params[:book_id]
     @book = Book.find(params[:book_id])
   end
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
+    @review.user_book_id = UserBook.find_by(user_id: current_user.id, book_id: book_param[:book_id]).id
     @review.save
     if @review.valid?
       redirect_to books_path
     else
       @book = Book.find(params[:book_id])
+      Timeline.create(user_book_id: @review.user_book_id, timeline_type: :create_review)
       render action: :new
     end
   end
 
   def edit
-    @book = UserBook.find(params[:id]).book
-    @review = Review.find_by(user_id: current_user.id, book_id: @book.id)
+    @review = Review.find review_id[:id]
+    @book = @review.user_book.book
   end
 
   def update
-    Review.find(params[:id]).update_attributes(review_params)
+    review = Review.find(params[:id])
+    review.update_attributes(review_params)
+    Timeline.create(user_book_id: review.user_book_id, timeline_type: :update_review)
     redirect_to actions: :show
   end
 
   def show
-    @review = Review.find(params[:id])
-    @book = Book.find(@review.book_id)
+    @review = Review.find review_id[:id]
+    @book = @review.user_book.book
   end
 
   private
+  def review_id
+    params.permit(:id)
+  end
+
   def review_params
-    params.require(:review).permit(:book_id, :title, :description)
+    params.require(:review).permit(:title, :description)
+  end
+
+  def book_param
+    params.permit(:book_id)
   end
 end

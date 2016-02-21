@@ -1,9 +1,9 @@
 - if current_user.present?
   %div.row
     %ul.list-group
-      - @reviews.each do |review|
+      - @timelines.each do |timeline|
         %li.list-group-item.row
-          - book = @books.find { |item| item.id == review.book_id}
+          - book = timeline.user_book.book
           %div.col-xs-6
             %div.col-xs-3
               %img{alt: book.title, src: book.image_url}
@@ -13,13 +13,15 @@
           %div.col-xs-6
             %div
               %span
-                = link_to review.title, review_path(review)
-            %div
+                = timeline.user_book.user.name
+                さんが
               %span
-                = User.find(review.user_id).name
-            %div
-              %span
-                = review.description
-
+                - case timeline.timeline_type
+                - when 'add_bookshelf'
+                  本棚に追加しました
+                - when 'create_review'
+                  レビューを作成しました
+                - when 'update_review'
+                  レビューを更新しました
 - else
   Kanazawabunkoは図書館サービスです。
