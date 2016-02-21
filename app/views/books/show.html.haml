@@ -7,14 +7,18 @@
   %h2
     登録している人
   %ul.list-group
-    - @users.each do |user|
-      %li.list-group-item
+    - @user_books.each do |user_book|
+      %li.list-group-item.row
         %span
-          %img{alt: user.name, src: user.icon_url, class: "img-circle", width: 50}
+          %img{alt: user_book.user.name, src: user_book.user.icon_url, class: "img-circle", width: 50}
         %span
-          = user.name
+          = user_book.user.name
         %span
-          - if user.user_books.find_by(book_id: @book.id).have?
+          - if user_book.have?
             貸し出し可能
           - else
             貸し出し不可
+        %span
+          - review = user_book.review
+          - if review
+            = link_to 'レビューを閲覧する', review_path(review)

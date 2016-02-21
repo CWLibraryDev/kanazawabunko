@@ -16,7 +16,7 @@
               = link_to image_tag(user_book.book.image_url, alt: user_book.book.title), user_book.book.url
           %div.col-xs-9
             %span.title
-              = user_book.book.title
+              = link_to user_book.book.title, book_path(user_book.book)
         %div.operation.col-xs-6
           %span
             貸し出し許可：

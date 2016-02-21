@@ -7,7 +7,8 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @users = User.find(UserBook.where(book_id: @book.id).pluck(:user_id))
+    # @users = User.find(UserBook.where(book_id: @book.id).pluck(:user_id))
+    @user_books = @book.user_books.includes(:user, :review)
   end
 
   def create
