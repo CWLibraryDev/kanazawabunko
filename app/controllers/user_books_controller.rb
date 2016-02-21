@@ -8,6 +8,7 @@ class UserBooksController < ApplicationController
       user_book.update_attributes(have: false)
     else
       user_book.update_attributes(have: true)
+      Timeline.create(user_book_id: user_book.id, timeline_type: :allow_lending)
     end
   end
 
