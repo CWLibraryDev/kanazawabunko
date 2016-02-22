@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_books, only: [:edit, :update]
+  resources :rental_requests
 
   root to: 'home#index'
 end
