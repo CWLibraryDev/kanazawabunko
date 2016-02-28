@@ -18,13 +18,11 @@ gem 'hamlit'
 gem 'amazon-ecs'
 gem 'bootstrap-toggle-rails'
 gem 'kaminari'
+gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug'
   gem 'bullet'
-end
-
-group :development do
   gem 'annotate'
   gem 'web-console', '~> 3.0'
   gem 'spring'
