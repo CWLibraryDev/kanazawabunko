@@ -16,6 +16,7 @@
         %span
           - if user_book.have?
             貸し出し可能
+            = link_to "貸し出し申請をする", new_user_book_rental_request_path(user_book)
           - else
             貸し出し不可
         %span
