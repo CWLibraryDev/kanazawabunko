@@ -15,8 +15,6 @@
           %ul.nav.navbar-nav
             %li
               = link_to "本棚", books_path
-            %li
-              %a aa
         %p.navbar-text.navbar-right
           - if current_user.present?
             = link_to 'ログアウト', logout_path
