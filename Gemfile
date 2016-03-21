@@ -17,7 +17,7 @@ gem 'honoka-rails'
 gem 'hamlit'
 gem 'amazon-ecs'
 gem 'bootstrap-toggle-rails'
-gem 'kaminari'
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 gem 'rails_12factor'
 
 group :development, :test do
