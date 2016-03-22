@@ -1,24 +1,21 @@
-## README
+## Kanazawabunko
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Kanazawabunkoは本の貸し借りをサポートする図書館システムです。
 
-Things you may want to cover:
+## 機能
 
-* Ruby version
+### 本の登録
 
-* System dependencies
+本の登録を行うことができます。本の情報はAmazonAPIを用いています。本の登録を行うことでレビューの投稿や貸し出し許可を行うことができます。
 
-* Configuration
+### レビューの投稿
 
-* Database creation
+本のレビューを投稿することができます。
 
-* Database initialization
+### 貸し出し許可
 
-* How to run the test suite
+本の貸し出し許可を行うことができます。
 
-* Services (job queues, cache servers, search engines, etc.)
+### 貸し出し申請
 
-* Deployment instructions
-
-* ...
+本の貸し出し申請を行うことができます。
