@@ -12,8 +12,9 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  resources :user_books, only: [:edit, :update]
-  resources :rental_requests
+  resources :user_books, only: [:edit, :update], shallow: true do
+    resources :rental_requests
+  end
 
   root to: 'home#index'
 end

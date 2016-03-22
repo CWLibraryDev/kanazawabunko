@@ -1,0 +1,14 @@
+%div.row
+  %h1 貸し出し申請をする
+%div.row
+  %img{alt: @user_book.book.title, src: @user_book.book.image_url}
+%div.row
+  %p
+    タイトル：
+    = @user_book.book.title
+  %p
+    所有者：
+    = @user_book.user.name
+%div.row
+  = form_for @rental_request, url: user_book_rental_requests_path do |f|
+    = render partial: "form", locals: {f: f}

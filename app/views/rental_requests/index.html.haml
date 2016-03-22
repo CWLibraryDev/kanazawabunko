@@ -1,0 +1,8 @@
+%div
+  %h1 貸し出し申請一覧
+%div.row
+  %ul.list-group
+    - @rental_requests.each do |rental_request|
+      %li.list-group-item.row
+        %div.operation.col-xs-6
+          s
