@@ -12,9 +12,13 @@
       %li.list-group-item.row
         %div.book_info.col-xs-6
           %div.col-xs-3
+            %span
+              - requests = user_book.rental_request.order("created_at DESC").first
+              = "hoge" if requests.present? && requests.returned_at.nil?
+          %div.col-xs-3
             %span.img
               = link_to image_tag(user_book.book.image_url, alt: user_book.book.title), user_book.book.url
-          %div.col-xs-9
+          %div.col-xs-6
             %span.title
               = link_to user_book.book.title, book_path(user_book.book)
         %div.operation.col-xs-6
