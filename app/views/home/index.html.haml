@@ -1,5 +1,8 @@
 - if current_user.present?
   %div.row
+    %div.col-xs-12
+      = link_to "本の検索", search_books_path, class: 'btn btn-primary'
+  %div.row
     %ul.list-group
       - @timelines.each do |timeline|
         %li.list-group-item.row
